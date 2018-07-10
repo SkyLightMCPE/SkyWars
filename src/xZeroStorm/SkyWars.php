@@ -595,19 +595,19 @@ class SWGameSender extends Task {
                                     $lobbytimer == 11           
                                     ) {
                                 foreach ($players as $p) {
-                                    $p->addTitle("", TextFormat::YELLOW . $lobbytimer);
+                                    $p->addTitle("", TextFormat::GREEN . $lobbytimer);
                                 }
                             }
                             
                             if ($lobbytimer >= 5 && $lobbytimer <= 10) {
                                 foreach ($players as $p) {
-                                    $p->addTitle("", TextFormat::RED . $lobbytimer);
+                                    $p->addTitle("", TextFormat::GREEN . $lobbytimer);
                                     $this->plugin->fillChests($levelArena);
                                 }
                             }
                             if ($lobbytimer >= 1 && $lobbytimer <= 5) {
                                 foreach ($players as $p) {
-                                    $p->addTitle("", TextFormat::GREEN . $lobbytimer);
+                                    $p->addTitle("", TextFormat::RED . $lobbytimer);
                                     $this->plugin->fillChests($levelArena);
                                 }
                             }
@@ -692,7 +692,7 @@ class SWGameSender extends Task {
 
                                 foreach ($players as $p) {
 
-                                    $p->addTitle("", TextFormat::RED . $endtimer);
+                                    $p->addTitle("", TextFormat::GREEN . $endtimer);
                                 }
                             }
 				
@@ -701,7 +701,7 @@ class SWGameSender extends Task {
 
                                 foreach ($players as $p) {
 
-                                    $p->addTitle("", TextFormat::YELLOW . $endtimer);
+                                    $p->addTitle("", TextFormat::RED . $endtimer);
                                 }
                             }
                             if ($endtimer == 5 ||
@@ -713,7 +713,7 @@ class SWGameSender extends Task {
 
                                 foreach ($players as $p) {
 
-                                    $p->addTitle("", TextFormat::GREEN . $endtimer);
+                                    $p->addTitle("", TextFormat::RED . $endtimer);
                                 }
                             }
                             if ($endtimer == 0) {
