@@ -1,0 +1,15 @@
+name: SkyWars
+version: 1.0
+api: 3.0.4
+main: xZeroStorm\SkyWars
+author: xZeroStorm
+commands:
+    Skywars:
+        description: "SkyWars Commands"
+        aliases: [sw, skywars]
+    spawn:
+        description: "Teleport zum Spawn"
+        aliases: [leave]
+    lobby:
+        description: "Transferiert dich zur Hub"
+        aliases: [hub]
