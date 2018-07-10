@@ -6,10 +6,10 @@ author: xZeroStorm
 commands:
     Skywars:
         description: "SkyWars Commands"
-        aliases: [sw, skywars]
+        aliases: [sw]
     spawn:
         description: "Teleport zum Spawn"
-        aliases: [leave]
+        aliases: [leave,]
     lobby:
         description: "Transferiert dich zur Hub"
         aliases: [hub]
