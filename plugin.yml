@@ -9,7 +9,7 @@ commands:
         aliases: [sw]
     spawn:
         description: "Teleport zum Spawn"
-        aliases: [leave,]
+        aliases: [leave]
     lobby:
         description: "Transferiert dich zur Hub"
         aliases: [hub]
