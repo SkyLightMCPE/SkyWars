@@ -181,14 +181,14 @@ class SkyWars extends PluginBase implements Listener {
             $this->resetArena($arena);
             if (file_exists($this->getServer()->getDataPath() . "worlds/" . $arena)) {
             	   $this->copymap($this->getDataFolder() . "Maps/" . $arena, $this->getServer()->getDataPath() . "worlds/" . $arena);
-                $this->getLogger()->Info($this->prefix . "Arena " . $arena . " wurde geladen");
+                $this->getLogger()->Info($this->prefix . "Arena " . $arena . " was loadet");
                 $this->getServer()->loadLevel($arena);
             }
         }
 
         $this->getScheduler()->scheduleRepeatingTask(new SWGameSender($this), 20);
         $this->getScheduler()->scheduleRepeatingTask(new SWRefreshSigns($this), 20);
-        $this->getLogger()->info($this->prefix . "wurde erfolgreich von xZeroStorm geladen!");
+        $this->getLogger()->info($this->prefix . "Plugin from xZeroStorm!");
     }
     	
     public function resetArena($arena) {
@@ -371,13 +371,13 @@ class SkyWars extends PluginBase implements Listener {
         if ($tile instanceof Sign) {
 
             if ($this->signregister === true && $this->signregisterWHO == $player->getName()) {
-                $tile->setText($this->Signprefix, $this->temparena, TextFormat::YELLOW . "Lade Runde...", "");
+                $tile->setText($this->Signprefix, $this->temparena, TextFormat::YELLOW . "Load Match...", "");
                 $this->signregister = false;
             }
 
             $text = $tile->getText();
             if ($text[0] == $this->Signprefix) {
-                if ($text[2] == TextFormat::GRAY . "[" . TextFormat::GREEN . "Beitreten" . TextFormat::GRAY . "]") {
+                if ($text[2] == TextFormat::GRAY . "[" . TextFormat::GREEN . "Join" . TextFormat::GRAY . "]") {
                     $spieleranzahl = count($this->getServer()->getLevelByName($text[1])->getPlayers());
                     $maxplayers = $config->get($text[1] . "Spieleranzahl");
                     if ($spieleranzahl < $maxplayers) {
@@ -390,10 +390,10 @@ class SkyWars extends PluginBase implements Listener {
                         $player->setFood(20);
                         $player->setHealth(20);
                     } else {
-                        $player->sendMessage($this->prefix . "Arena " . $text[1] . " ist voll!");
+                        $player->sendMessage($this->prefix . "Arena " . $text[1] . " is full!");
                     }
                 } else {
-                    $player->sendMessage($this->prefix . "Du kannst diese Runde nicht beitreten!");
+                    $player->sendMessage($this->prefix . "You can't join this Match!");
                 }
             }
         }
@@ -442,7 +442,7 @@ class SkyWars extends PluginBase implements Listener {
         }
         
         if ($cmd->getName() == "lobby") {
-            $sender->transfer("", "19132");
+            $sender->transfer("", "");
         }
         
         if ($cmd->getName() == "Skywars") {
@@ -457,12 +457,12 @@ class SkyWars extends PluginBase implements Listener {
                             $config->save();
                             $this->copymap($this->getServer()->getDataPath() . "worlds/" . $arena, $this->getDataFolder() . "Maps/" . $arena);
                             $this->resetArena($arena);
-                            $sender->sendMessage($this->prefix . "Du hast erfolgreich eine neue SkyWars Arena erstellt!");
+                            $sender->sendMessage($this->prefix . "You have create a SkyWars Match!");
                         }
                     }
                 } elseif ($args[0] == "refill" && $sender->isOP()) {
                     $this->fillChests($this->getServer()->getLevelByName($sender->getLevel()->getFolderName()));
-                    $sender->sendMessage($this->prefix . "Alle Kisten auf der Map " . $sender->getLevel()->getFolderName() . " wurden befüllt");
+                    $sender->sendMessage($this->prefix . "All Chest from the Map " . $sender->getLevel()->getFolderName() . " were all filled");
                 } elseif ($args[0] == "regsign" && $sender->isOP()) {
                     if (!empty($args[1])) {
 
@@ -470,7 +470,7 @@ class SkyWars extends PluginBase implements Listener {
                         $this->signregisterWHO = $sender->getName();
                         $this->temparena = $args[1];
 
-                        $sender->sendMessage($this->prefix . "Tippe nun ein Schild an um die Runde zu registrieren");
+                        $sender->sendMessage($this->prefix . "Touch a Sign to Register the Match!");
                     }
                 } elseif ($args[0] == "start" && $sender->hasPermission("sw.forcestart")) {
                     $arena = $sender->getLevel()->getFolderName();
@@ -479,11 +479,11 @@ class SkyWars extends PluginBase implements Listener {
 						if($config->get($arena."Status") == "Lobby"){
 							$config->set($arena."LobbyTimer", 6);
 							$config->save();
-							$sender->sendMessage($this->prefix . "ForceStart wurde Aktiviert!");
+							$sender->sendMessage($this->prefix . "ForceStart has been actived!");
 						}
 						
 					} else {
-						$sender->sendMessage($this->prefix . TextFormat::RED . "Du bist derzeit in keiner SkyWars Arena drinne!");
+						$sender->sendMessage($this->prefix . TextFormat::RED . "You are not in a Skywars Match!");
 				}
 					
                 } elseif ($args[0] == "setspawn" && $sender->isOP()) {
@@ -496,7 +496,7 @@ class SkyWars extends PluginBase implements Listener {
 
                         $config->set($arena . "Spawn" . $args[1], $coords);
                         $config->save();
-                        $sender->sendMessage($this->prefix . "Du hast Spawn " . $args[1] . " der Runde gesetzt!");
+                        $sender->sendMessage($this->prefix . "You set the Spawn" . $args[1] . " from the Match!");
                     }
                 }
             }
@@ -524,18 +524,18 @@ class SWRefreshSigns extends Task {
             if ($t instanceof Sign) {
                 $text = $t->getText();
                 if ($text[0] == $this->Signprefix) {
-                    $aop = count($this->plugin->getServer()->getLevelByName($text[1])->getPlayer());
-                    $ingame = TextFormat::GRAY . "[" . TextFormat::GREEN . "Beitreten" . TextFormat::GRAY . "]";
+                    $aop = count($this->plugin->getServer()->getLevelByName($text[1])->getPlayers();
+                    $ingame = TextFormat::GRAY . "[" . TextFormat::GREEN . "Join" . TextFormat::GRAY . "]";
                     $config = new Config($this->plugin->getDataFolder() . "config.yml", Config::YAML);
                     $count = $config->get($text[1] . "Spieleranzahl");
                     if ($config->get($text[1] . "Status") != "Lobby") {
                         $ingame = TextFormat::GRAY . "[" . TextFormat::RED . "InGame" . TextFormat::GRAY . "]";
                     }
                     if ($aop >= 24) {
-                        $ingame = TextFormat::GRAY . "[" . TextFormat::DARK_RED . "Voll" . TextFormat::GRAY . "]";
+                        $ingame = TextFormat::GRAY . "[" . TextFormat::DARK_RED . "Full" . TextFormat::GRAY . "]";
                     }
                     if ($config->get($text[1] . "Status") == "Ende") {
-                        $ingame = TextFormat::GRAY . "[" . TextFormat::YELLOW . "Restartet..." . TextFormat::GRAY . "]";
+                        $ingame = TextFormat::GRAY . "[" . TextFormat::YELLOW . "Restarting" . TextFormat::GRAY . "]";
                     }
                     $t->setText($this->Signprefix, $text[1], $ingame, TextFormat::GREEN . $aop . TextFormat::GRAY . " / " . TextFormat::RED . $count);
                 }
