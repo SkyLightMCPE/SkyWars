@@ -442,7 +442,7 @@ class SkyWars extends PluginBase implements Listener {
         }
         
         if ($cmd->getName() == "lobby") {
-            $sender->transfer("", "");
+            $sender->transfer("", "19132");
         }
         
         if ($cmd->getName() == "Skywars") {
