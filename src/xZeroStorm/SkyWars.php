@@ -524,7 +524,7 @@ class SWRefreshSigns extends Task {
             if ($t instanceof Sign) {
                 $text = $t->getText();
                 if ($text[0] == $this->Signprefix) {
-                    $aop = count($this->plugin->getServer()->getLevelByName($text[1])->getPlayers();
+                    $aop = count($this->plugin->getServer()->getLevelByName($text[1])->getPlayers());
                     $ingame = TextFormat::GRAY . "[" . TextFormat::GREEN . "Join" . TextFormat::GRAY . "]";
                     $config = new Config($this->plugin->getDataFolder() . "config.yml", Config::YAML);
                     $count = $config->get($text[1] . "Spieleranzahl");
