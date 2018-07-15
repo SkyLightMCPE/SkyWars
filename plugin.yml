@@ -1,6 +1,6 @@
 name: SkyWars
 version: 1.0
-api: 3.0.4
+api: 4.0.0
 main: xZeroStorm\SkyWars
 author: xZeroStorm
 commands:
